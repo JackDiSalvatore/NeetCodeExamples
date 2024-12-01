@@ -11,17 +11,21 @@ class Solution {
     public int removeDuplicatesFromSortedArray(int[] nums) {
         if (nums.length == 0) return 0;
 
-        int index = 1;
+        int j = 0;
 
         for (int i = 0; i < nums.length - 1; i++) {
 
             // Check if next element is NOT a duplicate
             if (nums[i] != nums[i + 1]) {
-                nums[index] = nums[i + 1];    // set uniqueIndex to number of next element
-                index = index + 1;
+                nums[j] = nums[i];    // nums[i] IS unique
+                j = j + 1;
             }
         }
 
-        return index;
+        // fill in last element
+        nums[j] = nums[nums.length - 1];
+        j = j + 1;
+
+        return j;
     }
 }
