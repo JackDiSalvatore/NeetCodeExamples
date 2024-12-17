@@ -41,8 +41,14 @@ public class MinStack {
     }
 
     public void pop() {
-        this.head = this.head.prev;
-        this.head.next = null;
+        if (this.head != null) { // Check to prevent NullPointerException
+            this.head = this.head.prev;
+
+            if (this.head != null) {    // Update head.next only if stack is not empty
+                this.head.next = null;
+            }
+
+        }
     }
 
     public int top() {
