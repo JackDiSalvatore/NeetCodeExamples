@@ -1,60 +1,90 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct {
-  int *items;
-  int capacity;
-  int top;
+#define MAX_SIZE 100 // Static Memory Allocation
+
+typedef struct
+{
+  int items[MAX_SIZE];
+  int top; // represents the `index` of the "top" element in the stack.
+           // "-1" means the stack is empty
 } Stack;
 
-Stack *createStack(int size) {
-  // Initialize fixed memory for Stack object
-  Stack *s = (Stack *)malloc(sizeof(Stack));
-
-  if (s == NULL) {
-    printf("Memory allocation failed for Stack\r\n");
-    return NULL;
-  }
-
-  // Initial fixed memory for Stack items;
-  s->items = (int *)malloc(size * sizeof(int));
-
-  if (s->items == NULL) {
-    printf("Memory allocation failed for Stack items\r\n");
-    free(s);
-    return NULL;
-  }
-
-  s->capacity = size;
-  s->top = -1; // index of the "top" of stack, set to -1 as first item will be
-               // in index 0
-
-  return s;
+void initStack(Stack *s)
+{
+  s->top = -1;
 }
 
-int isEmpty();
+int isEmpty(Stack *s)
+{
+  return s->top == -1;
+};
 
-void push();
+void push(Stack *s, int val)
+{
+  // Check for overflow condition
+  if (s->top == MAX_SIZE - 1)
+  {
+    printf("Stack overflow!\r\n");
+    return;
+  }
+  printf("push(%d)\r\n", val);
+  s->top = s->top + 1;
+  s->items[s->top] = val;
+};
 
-void pop();
+void pop(Stack *s)
+{
+  // Check for underflow condition
+  if (s->top == -1)
+  {
+    printf("Stack underflow!\r\n");
+    return;
+  }
+  printf("pop()\r\n");
+  s->top = s->top - 1;
+  // do not need to "delete" element from array as it is a garbage value
+};
 
-int peek();
+int peek(Stack *s)
+{
+  // Check for underflow condition
+  if (s->top == -1)
+  {
+    printf("Stack is empty\r\n");
+    return -1; // return dummy value
+  }
+  return s->items[s->top];
+};
 
-int main() {
-  Stack *myStack = createStack(10);
+void printStack(Stack *s)
+{
+  for (int i = s->top; i >= 0; i--)
+  {
+    printf("%d ", s->items[i]);
+  }
+  printf("\r\n");
+}
+
+int main()
+{
+  Stack stack;
+  initStack(&stack);
 
   // New empty stack
-  printf("%p\r\n", &myStack);
-  printf("%p\r\n", myStack->items);
-  printf("%p\r\n", &myStack->capacity);
-  printf("%p\r\n", &myStack->top);
+  printf("Stack Addr   : %p\r\n", &stack);
+  printf("Stack top    : %d\r\n", stack.top);
+  printf("Stack isEmpty:%d\r\n", isEmpty(&stack));
 
-  printf("%d\r\n", myStack->items[-1]);
-  printf("%d\r\n", myStack->capacity);
-  printf("%d\r\n", myStack->top);
+  push(&stack, 5);
+  push(&stack, 7);
+  push(&stack, 3);
 
-  int y = 10;
-  int *x = &y;
-  printf("%d\r\n", *x);
-  printf("%p\r\n", &x);
+  printf("peek: %d\r\n", peek(&stack));
+
+  pop(&stack);
+
+  push(&stack, 1);
+
+  printStack(&stack);
 }
