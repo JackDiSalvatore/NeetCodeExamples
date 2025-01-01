@@ -38,11 +38,11 @@ void pop(Stack *s)
     {
         return;
     }
-    s->top = s->top->prev;
 
     // free dynamically allocated memory (from Node in the push function)
-    Node *temp = s->top;
-    free(temp);
+    Node *temp = s->top;   // Save the top node
+    s->top = s->top->prev; // Update the top to the previous node
+    free(temp);            // Free the memory allocated for the removed node
     temp = NULL;
 }
 
