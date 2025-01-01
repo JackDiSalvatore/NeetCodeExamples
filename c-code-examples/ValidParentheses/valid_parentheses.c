@@ -18,11 +18,6 @@ void initStack(Stack *s)
     s->top = NULL;
 }
 
-void destroyStack(Stack *s)
-{
-    // TODO
-}
-
 bool isEmpty(Stack *s)
 {
     return s->top == NULL;
@@ -43,8 +38,12 @@ void pop(Stack *s)
     {
         return;
     }
-    // TODO: free memory
     s->top = s->top->prev;
+
+    // free dynamically allocated memory (from Node in the push function)
+    Node *temp = s->top;
+    free(temp);
+    temp = NULL;
 }
 
 char peek(Stack *s)
@@ -55,6 +54,14 @@ char peek(Stack *s)
     }
 
     return s->top->value;
+}
+
+void destroyStack(Stack *s)
+{
+    while (!isEmpty(s))
+    {
+        pop(s);
+    }
 }
 
 bool isValid(char *s)
@@ -79,7 +86,8 @@ bool isValid(char *s)
         }
     }
 
-    // TODO: free stack memory (destroy)
+    // free stack memory
+    destroyStack(&stack);
 
     return isEmpty(&stack);
 }
