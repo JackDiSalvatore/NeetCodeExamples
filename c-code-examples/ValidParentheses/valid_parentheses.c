@@ -86,10 +86,12 @@ bool isValid(char *s)
         }
     }
 
+    bool result = isEmpty(&stack);
+
     // free stack memory
     destroyStack(&stack);
 
-    return isEmpty(&stack);
+    return result;
 }
 
 int main()
