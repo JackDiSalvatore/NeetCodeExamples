@@ -44,7 +44,10 @@ void pop(Stack *s)
         return;
     }
 
+    Node *temp = s->top;
     s->top = s->top->prev;
+    free(temp);
+    temp = NULL;
 }
 
 int peek(Stack *s)
