@@ -2,8 +2,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// TODO
-// struct Node *reverseList(struct Node *head) {}
+Node *reverseList(Node *head) {
+  if (head == NULL)
+    return NULL;
+
+  Node *prev = NULL;
+  // Node *curr = head;
+
+  while (head != NULL) {
+    Node *temp = head;
+    head = head->next; // curr head forward
+    temp->next = prev; // reverse pointer
+    prev = temp;       // move prev forward
+  }
+
+  return prev;
+}
+
+void displayList(Node *head) {
+  Node *temp = head;
+  while (temp != NULL) {
+    printf("%d ", temp->val);
+    temp = temp->next;
+  }
+  printf("\r\n");
+}
 
 int main() {
   SinglyLinkedList *list = create();
@@ -13,10 +36,10 @@ int main() {
 
   display(list); // Should print: 3 2 1
 
-  // TODO
-  // Node *newHead = reverseList(list->head);
+  Node *newHead = reverseList(list->head);
 
-  display(list); // Should print: 1 2 3
+  // traverse new tree
+  displayList(newHead);
 
   // clean up
   destroy(list);
