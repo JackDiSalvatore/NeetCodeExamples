@@ -37,14 +37,14 @@ class LinkedList {
     }
 
     public void insertHead(int val) {
-        Node nodeToInsert = new Node(val);
+        Node node = new Node(val);
 
-        nodeToInsert.next = head.next;  // skip over 'dummy' node
-        head.next = nodeToInsert;
+        node.next = head.next;  // skip over 'dummy' node
+        head.next = node;
 
         // if list is empty
-        if (nodeToInsert.next == null) {
-            tail = nodeToInsert;
+        if (node.next == null) {
+            tail = node;
         }
     }
 
