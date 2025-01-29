@@ -23,7 +23,7 @@ class LinkedList {
 
     // return -1 if index is out of bounds
     public int get(int index) {
-        Node cur = head;   // skip the 'dummy' node
+        Node cur = head;
         int i = 0;
 
         while (cur != null) {
