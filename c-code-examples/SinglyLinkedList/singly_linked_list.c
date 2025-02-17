@@ -93,16 +93,28 @@ void myListRemove(SinglyLinkedList *list, int index)
     return;
 
   // Remove head (index = 0)
-  // TODO
-
-  for (int i = 0; i < index; i++)
+  if (index == 0)
   {
-    prev = curr;
-    curr = curr->next;
+    list->head = curr->next;
   }
+  else
+  {
+    // Find prev and node to remove
+    for (int i = 0; i < index; i++)
+    {
+      prev = curr;
+      curr = curr->next;
+    }
 
-  // Attach `prev` node to `curr->next` node
-  prev->next = curr->next;
+    // Attach `prev` node to `curr->next` node
+    prev->next = curr->next;
+
+    // Update if deleting the tail
+    if (index == list->length - 1)
+    {
+      list->tail = curr;
+    }
+  }
 
   // Delete from memory
   curr->next = NULL;

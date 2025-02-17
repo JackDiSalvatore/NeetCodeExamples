@@ -4,7 +4,7 @@
 
 int main()
 {
-    printf("Hello World\r\n");
+    printf("Singly Linked List\r\n");
 
     SinglyLinkedList *list = myListCreate(); // head -> tail
 
@@ -52,6 +52,14 @@ int main()
     myListGetValues(list);
 
     myListRemove(list, 3); // 5 -> 4 -> 3 -> 2 -> 1 -> 0 -> 0
+    myListGetValues(list);
+
+    // Remove from head
+    myListRemove(list, 0); // 4 -> 3 -> 2 -> 1 -> 0 -> 0
+    myListGetValues(list);
+
+    // Remove from tail
+    myListRemove(list, 5); // 4 -> 3 -> 2 -> 1 -> 0
     myListGetValues(list);
 
     printf("List length: %d \r\n", list->length);
