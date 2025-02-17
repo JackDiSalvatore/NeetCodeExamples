@@ -112,7 +112,7 @@ void myListRemove(SinglyLinkedList *list, int index)
     // Update if deleting the tail
     if (index == list->length - 1)
     {
-      list->tail = curr;
+      list->tail = prev;
     }
   }
 
