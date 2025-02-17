@@ -26,17 +26,20 @@ SinglyLinkedList *myListCreate()
 int myListGet(SinglyLinkedList *list, int index)
 {
   if (list == NULL) // null list check
-    return 0;
+    return -1;
 
   // Out of bounds check
-  if (index < 0 || index > list->length)
-    return 0;
+  if (index < 0 || index >= list->length)
+    return -1;
 
   Node *curr = list->head;
 
   // go to element at index
   for (int i = 0; i < index; i++)
     curr = curr->next;
+
+  if (curr == NULL) // NULL check
+    return -1;
 
   return curr->val;
 }
@@ -102,7 +105,7 @@ void myListRemove(SinglyLinkedList *list, int index)
   Node *prev = NULL;
 
   // Out of bounds
-  if (index < 0 || index > list->length)
+  if (index < 0 || index >= list->length)
     return;
 
   // Remove head (index = 0)
