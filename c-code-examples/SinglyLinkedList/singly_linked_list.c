@@ -15,9 +15,8 @@ SinglyLinkedList *myListCreate()
 {
   SinglyLinkedList *list = (SinglyLinkedList *)malloc(sizeof(SinglyLinkedList));
   if (list == NULL)
-  {
     return NULL; // Check malloc success
-  }
+
   list->head = NULL;
   list->tail = NULL;
   list->length = 0;
@@ -26,6 +25,9 @@ SinglyLinkedList *myListCreate()
 
 int myListGet(SinglyLinkedList *list, int index)
 {
+  if (list == NULL) // null list check
+    return 0;
+
   // Out of bounds check
   if (index < 0 || index > list->length)
     return 0;
@@ -41,6 +43,9 @@ int myListGet(SinglyLinkedList *list, int index)
 
 void myListInsert(SinglyLinkedList *list, int index, int val)
 {
+  if (list == NULL) // null list check
+    return;
+
   Node *node = (Node *)malloc(sizeof(Node));
   if (node == NULL)
   {
@@ -90,6 +95,9 @@ void myListInsert(SinglyLinkedList *list, int index, int val)
 
 void myListRemove(SinglyLinkedList *list, int index)
 {
+  if (list == NULL || list->head == NULL) // null list check
+    return;
+
   Node *curr = list->head;
   Node *prev = NULL;
 
@@ -131,6 +139,9 @@ void myListRemove(SinglyLinkedList *list, int index)
 
 void myListInsertHead(SinglyLinkedList *list, int val)
 {
+  if (list == NULL) // null list check
+    return;
+
   Node *node = (Node *)malloc(sizeof(Node));
   if (node == NULL)
   {
@@ -157,6 +168,9 @@ void myListInsertHead(SinglyLinkedList *list, int val)
 
 void myListInsertTail(SinglyLinkedList *list, int val)
 {
+  if (list == NULL) // null list check
+    return;
+
   Node *node = (Node *)malloc(sizeof(Node));
   if (node == NULL)
   {
@@ -195,6 +209,9 @@ void myListGetValues(SinglyLinkedList *list)
 
 void myListDestroy(SinglyLinkedList *list)
 {
+  if (list == NULL)
+    return; // Guard against NULL pointer
+
   Node *tmp = list->head;
 
   // Free all node memory
