@@ -18,6 +18,8 @@ typedef struct
 
 SinglyLinkedList *myListCreate();
 
+void myListDestroy(SinglyLinkedList *list);
+
 int myListGet(SinglyLinkedList *list, int index);
 void myListGetValues(SinglyLinkedList *list);
 

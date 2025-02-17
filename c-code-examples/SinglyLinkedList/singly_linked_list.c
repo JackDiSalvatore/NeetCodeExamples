@@ -42,6 +42,11 @@ int myListGet(SinglyLinkedList *list, int index)
 void myListInsert(SinglyLinkedList *list, int index, int val)
 {
   Node *node = (Node *)malloc(sizeof(Node));
+  if (node == NULL)
+  {
+    printf("Memory allocation failed\n");
+    return; // Check malloc success
+  }
   node->val = val;
   node->next = NULL;
 
@@ -127,6 +132,11 @@ void myListRemove(SinglyLinkedList *list, int index)
 void myListInsertHead(SinglyLinkedList *list, int val)
 {
   Node *node = (Node *)malloc(sizeof(Node));
+  if (node == NULL)
+  {
+    printf("Memory allocation failed\n");
+    return; // Check malloc success
+  }
   node->val = val;
   node->next = NULL;
 
@@ -148,6 +158,11 @@ void myListInsertHead(SinglyLinkedList *list, int val)
 void myListInsertTail(SinglyLinkedList *list, int val)
 {
   Node *node = (Node *)malloc(sizeof(Node));
+  if (node == NULL)
+  {
+    printf("Memory allocation failed\n");
+    return; // Check malloc success
+  }
   node->val = val;
   node->next = NULL;
 
@@ -176,4 +191,25 @@ void myListGetValues(SinglyLinkedList *list)
     tmp = tmp->next;
   }
   printf("NULL \r\n");
+}
+
+void myListDestroy(SinglyLinkedList *list)
+{
+  Node *tmp = list->head;
+
+  // Free all node memory
+  while (tmp != NULL)
+  {
+    Node *next = tmp->next; // save next
+    free(tmp);              // free what the current pointer points to
+    tmp = next;             // move to next
+  }
+
+  // Clear pointers and values
+  list->head = NULL;
+  list->tail = NULL;
+  list->length = 0;
+
+  // Free the list
+  free(list);
 }

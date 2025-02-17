@@ -64,5 +64,11 @@ int main()
 
     printf("List length: %d \r\n", list->length);
 
+    // Destroy list
+    myListDestroy(list);
+    printf("List: ");
+    myListGetValues(list);
+    printf("List length: %d \r\n", list->length);
+
     return 0;
 }
