@@ -8,16 +8,16 @@ int main()
 
     SinglyLinkedList *list = myListCreate(); // head -> tail
 
-    // Insert Head
+    // Insert head
     myListInsertHead(list, 2); // 2
     myListInsertHead(list, 3); // 3 -> 2
     myListInsertHead(list, 4); // 4 -> 3 -> 2
 
-    // Insert Tail
+    // Insert tail
     myListInsertTail(list, 1); // 4 -> 3 -> 2 -> 1
     myListInsertTail(list, 0); // 4 -> 3 -> 2-> 1 -> 0
 
-    // Insert Head
+    // Insert head
     myListInsertHead(list, 5); // 5 -> 4 -> 3 -> 2 -> 1 -> 0
 
     printf("Starting Singly Linked List: \r\n");
@@ -27,17 +27,17 @@ int main()
     // index: 0    1    2    3    4    5
     //  node: 5 -> 4 -> 3 -> 2 -> 1 -> 0
 
-    // Insert - Head
+    // Insert at index 0 (head)
     printf("Insert at index 0 \r\n");
     myListInsert(list, 0, 5); // 5 -> 5 -> 4 -> 3 -> 2 -> 1 -> 0
     myListGetValues(list);
 
-    // Insert - Tail
+    // Insert at last index (tail)
     printf("Insert at index 6 \r\n");
     myListInsert(list, 6, 0); // 5 -> 5 -> 4 -> 3 -> 2 -> 1 -> 0 -> 0
     myListGetValues(list);
 
-    // Insert - Middle
+    // Insert middle
     printf("Insert at index 4 \r\n");
     myListInsert(list, 4, 2); // 5 -> 5 -> 4 -> 3 -> 2 -> 2 -> 1 -> 0 -> 0
     myListGetValues(list);
