@@ -24,7 +24,20 @@ SinglyLinkedList *myListCreate()
   return list;
 }
 
-void myListGet(SinglyLinkedList *list, int index);
+int myListGet(SinglyLinkedList *list, int index)
+{
+  // Out of bounds check
+  if (index < 0 || index > list->length)
+    return 0;
+
+  Node *curr = list->head;
+
+  // go to element at index
+  for (int i = 0; i < index; i++)
+    curr = curr->next;
+
+  return curr->val;
+}
 
 void myListInsert(SinglyLinkedList *list, int index, int val)
 {
@@ -70,7 +83,34 @@ void myListInsert(SinglyLinkedList *list, int index, int val)
   list->length++;
 }
 
-void myListRemove(SinglyLinkedList *list, int index);
+void myListRemove(SinglyLinkedList *list, int index)
+{
+  Node *curr = list->head;
+  Node *prev = NULL;
+
+  // Out of bounds
+  if (index < 0 || index > list->length)
+    return;
+
+  // Remove head (index = 0)
+  // TODO
+
+  for (int i = 0; i < index; i++)
+  {
+    prev = curr;
+    curr = curr->next;
+  }
+
+  // Attach `prev` node to `curr->next` node
+  prev->next = curr->next;
+
+  // Delete from memory
+  curr->next = NULL;
+  free(curr);
+  curr = NULL;
+
+  list->length--;
+}
 
 void myListInsertHead(SinglyLinkedList *list, int val)
 {

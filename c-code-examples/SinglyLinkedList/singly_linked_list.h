@@ -18,7 +18,7 @@ typedef struct
 
 SinglyLinkedList *myListCreate();
 
-void myListGet(SinglyLinkedList *list, int index);
+int myListGet(SinglyLinkedList *list, int index);
 void myListGetValues(SinglyLinkedList *list);
 
 void myListInsert(SinglyLinkedList *list, int index, int val);

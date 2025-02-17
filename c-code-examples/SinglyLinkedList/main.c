@@ -42,6 +42,18 @@ int main()
     myListInsert(list, 4, 2); // 5 -> 5 -> 4 -> 3 -> 2 -> 2 -> 1 -> 0 -> 0
     myListGetValues(list);
 
+    // Get
+    printf("index[0] = %d\r\n", myListGet(list, 0)); // 5
+    printf("index[5] = %d\r\n", myListGet(list, 5)); // 2
+    printf("index[6] = %d\r\n", myListGet(list, 6)); // 1
+
+    // Remove
+    myListRemove(list, 1); // 5 -> 4 -> 3 -> 2 -> 2 -> 1 -> 0 -> 0
+    myListGetValues(list);
+
+    myListRemove(list, 3); // 5 -> 4 -> 3 -> 2 -> 1 -> 0 -> 0
+    myListGetValues(list);
+
     printf("List length: %d \r\n", list->length);
 
     return 0;
