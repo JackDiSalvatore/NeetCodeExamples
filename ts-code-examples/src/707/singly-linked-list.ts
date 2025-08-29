@@ -64,6 +64,11 @@ export class SinglyLinkedList {
     if (index === 0) {
       node.next = this.head;
       this.head = node;
+
+      if (this.tail === null) {
+        // If list was empty
+        this.tail = node;
+      }
       return;
     }
 
@@ -74,17 +79,13 @@ export class SinglyLinkedList {
 
     // Go to position `prev` to where to add the node
     let prev = this.head;
-    let currentIndex = 0;
 
     for (let i = 0; i < index - 1; i++) {
-      if (prev.next) {
-        prev = prev.next;
-        currentIndex++;
+      if (prev.next === null) {
+        return; // Out of bounds - can't reach index
       }
+      prev = prev.next;
     }
-
-    // Out of bounds
-    if (currentIndex < index - 1) return;
 
     node.next = prev.next; // attach `node` to prev
     prev.next = node;
@@ -104,19 +105,28 @@ export class SinglyLinkedList {
 
     // Delete from head
     if (index === 0) {
-      this.head = this.head?.next ?? null;
+      this.head = this.head.next;
+
+      if (this.head === null) {
+        // Update tail when deleting last element
+        this.tail = null;
+      }
       return;
     }
 
-    let curr = this.head;
+    let curr: Node | null = this.head;
     let prev = curr;
 
     for (let i = 0; i < index; i++) {
-      if (curr.next) {
-        prev = curr;
-
-        curr = curr?.next;
+      if (curr === null) {
+        return; // Out of bounds
       }
+      prev = curr;
+      curr = curr.next;
+    }
+
+    if (curr === null) {
+      return; // Out of bounds
     }
 
     prev.next = curr.next; // have `prev` skip over `curr`
