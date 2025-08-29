@@ -1,6 +1,6 @@
 import { isPalindrome } from "../../src/125/valid-palindrome";
 
-describe.only("isPalindrome", () => {
+describe("isPalindrome", () => {
   describe("given examples", () => {
     test('should return true for "A man, a plan, a canal: Panama"', () => {
       expect(isPalindrome("A man, a plan, a canal: Panama")).toBe(true);
