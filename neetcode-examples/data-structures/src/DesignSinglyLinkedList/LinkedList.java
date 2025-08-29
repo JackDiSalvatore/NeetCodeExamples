@@ -17,13 +17,13 @@ class LinkedList {
     private Node tail;
 
     public LinkedList() {
-        // Init the list with a 'dumy' node
-        this.head = new Node(-1);
-        this.tail = this.head;
+        this.head = null;
+        this.tail = null;
     }
 
+    // return -1 if index is out of bounds
     public int get(int index) {
-        Node cur = head.next;   // skip the 'dummy' node
+        Node cur = head;
         int i = 0;
 
         while (cur != null) {
@@ -37,30 +37,57 @@ class LinkedList {
     }
 
     public void insertHead(int val) {
-        Node nodeToInsert = new Node(val);
+        Node node = new Node(val);
 
-        nodeToInsert.next = head.next;  // skip over 'dummy' node
-        head.next = nodeToInsert;
+        node.next = head;  // attach new node to head
+        head = node;   // head is new node;
 
         // if list is empty
-        if (nodeToInsert.next == null) {
-            tail = nodeToInsert;
+        if (node.next == null) {
+            tail = node;
         }
     }
 
     public void insertTail(int val) {
-        tail.next = new Node(val);
-        tail = tail.next;
+        Node node = new Node(val);
+
+        // if list is empty
+        if (head == null) {
+            head = node;
+            tail = node;
+
+            return;
+        }
+
+        tail.next = node; // attach new node to tail
+        tail = node; // set tail to new node
     }
 
+    /**
+     *
+     * @param index the index to remove
+     * @return true if successfull else false
+     */
     public boolean remove(int index) {
-        Node prev = head;   // using 'dummy' node as previous
+        // Invalid state
+        if (head == null || index < 0) return false;
+
+        // if removing the `0`th element (head)
+        if (index == 0) {
+            head = head.next; // move head forward
+
+            if (head == null) tail = head;
+
+            return true;
+        }
+
+        Node prev = head; // start from the `head` node as previous
         int i = 0;
 
-        // Find index to remove
-        while (i < index && prev != null) { // make sure we are not at the end of the list
+        // Find index to remove, which will be right before the `target` node
+        while (i < index - 1 && prev != null) { // make sure we are not at the end of the list
             i++;
-            prev = prev.next; // move to DesignSinglyLinkedList.Node right before the 'target' node to delete
+            prev = prev.next; // move `prev` forward
         }
 
         // In bounds
@@ -71,7 +98,7 @@ class LinkedList {
                 tail = prev;
             }
 
-            prev.next = prev.next.next;
+            prev.next = prev.next.next; // attach prev node to next next node
             return true;
         }
 
@@ -82,7 +109,7 @@ class LinkedList {
 
     public ArrayList<Integer> getValues() {
         ArrayList<Integer> values = new ArrayList<Integer>();
-        Node cur = head.next;   // We need to skip the 'dummy' node
+        Node cur = head; // start at head
 
         while (cur != null) {
             values.add(cur.value);
