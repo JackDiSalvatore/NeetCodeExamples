@@ -1,7 +1,7 @@
 // 2D Array - DS
 import { hourglassSum } from "../../src/hacker_rank/hourglass-sum";
 
-describe.only("hourglassSum", () => {
+describe("hourglassSum", () => {
   it("should calculate hourglass sum", () => {
     expect(
       hourglassSum([
