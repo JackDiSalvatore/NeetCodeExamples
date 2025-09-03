@@ -1,5 +1,3 @@
-// Arrays - DS
-
 import {
   reverseArray,
   reverseArrayInPlace,
