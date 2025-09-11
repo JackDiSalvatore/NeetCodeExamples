@@ -1,4 +1,4 @@
-import { twoSum } from "../../src/1/two-sum";
+import { twoSum } from "../../../src/leetcode/1/two-sum";
 
 describe("twoSum", () => {
   describe("basic cases", () => {

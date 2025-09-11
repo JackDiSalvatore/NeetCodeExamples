@@ -1,4 +1,4 @@
-import { maxProfit } from "../../src/121/max-profit";
+import { maxProfit } from "../../../src/leetcode/121/max-profit";
 
 describe("maxProfit", () => {
   describe("basic cases", () => {

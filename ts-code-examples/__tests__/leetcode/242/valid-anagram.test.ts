@@ -1,4 +1,4 @@
-import { isAnagram } from "../../src/242/valid-anagram";
+import { isAnagram } from "../../../src/leetcode/242/valid-anagram";
 
 describe("valid anagram", () => {
   it("should do something", () => {

@@ -1,4 +1,4 @@
-import { isPalindrome } from "../../src/125/valid-palindrome";
+import { isPalindrome } from "../../../src/leetcode/125/valid-palindrome";
 
 describe("isPalindrome", () => {
   describe("given examples", () => {

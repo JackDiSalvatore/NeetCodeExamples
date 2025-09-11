@@ -1,4 +1,4 @@
-import { SinglyLinkedList } from "../../src/707/singly-linked-list";
+import { SinglyLinkedList } from "../../../src/leetcode/707/singly-linked-list";
 
 describe("SinglyLinkedList", () => {
   let list: SinglyLinkedList;
