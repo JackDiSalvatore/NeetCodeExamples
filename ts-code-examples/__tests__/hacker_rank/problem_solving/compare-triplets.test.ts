@@ -7,8 +7,6 @@ describe("compare triplets", () => {
 
     const result = compareTriplets(a, b);
     expect(result).toEqual([1, 1]);
-
-    console.log("result: ", result);
   });
 
   it("another test case", () => {
