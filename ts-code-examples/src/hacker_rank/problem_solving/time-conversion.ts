@@ -25,13 +25,13 @@ export function timeConversion(s: string): string {
 
   if (amOrPm === "AM") {
     // 12 AM
-    if (s[0] + s[1] == "12") militaryTime = "00" + s.slice(2, 8);
+    if (s.substring(0, 2) == "12") militaryTime = "00" + s.slice(2, 8);
     // 1AM - 11 AM
     else militaryTime = s.slice(0, 8);
   }
 
   if (amOrPm === "PM") {
-    const prevTime = parseInt(s[0] + s[1]);
+    const prevTime = parseInt(s.substring(0, 2));
 
     if (prevTime === 12) militaryTime = s.slice(0, 8);
     else militaryTime = (prevTime + 12).toString() + s.slice(2, 8);
