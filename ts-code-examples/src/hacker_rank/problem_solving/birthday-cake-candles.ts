@@ -10,15 +10,14 @@
 
 export function birthdayCakeCandles(candles: number[]): number {
   // Write your code here
-  let tallest = candles[0];
+  let tallest = -Infinity;
   let count = 0;
 
   for (let candle of candles) {
     if (candle > tallest) {
       tallest = candle;
-      count = 0;
-    }
-    if (candle === tallest) {
+      count = 1;
+    } else if (candle === tallest) {
       count++;
     }
   }
