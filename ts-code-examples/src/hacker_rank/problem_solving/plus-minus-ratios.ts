@@ -1,0 +1,50 @@
+/*
+
+Given an array of integers, calculate the ratios of its elements that are
+`positive`, `negative` and `zero`.  Print the decimal valueof each fraction on
+a new line with 6 places after the decimal.
+
+Note: This challenge introduces precision problems.  The test cases are scaled
+to six decimal places, though answers with absolute error of up to 10^-4 are acceptable.
+
+Example:
+
+arr = [1, 1, 0, -1, -1]
+
+There are n = 5 elements: two positive, two negative and one zero.  Their ratios are
+2/5 = 0.400000
+2/5 = 0.400000
+1/5 = 0.200000
+
+Results are printed as:
+0.400000
+0.400000
+0.200000
+
+*/
+
+export function plusMinusRatios(arr: number[]): void {
+  const size = arr.length;
+  let postives = 0;
+  let negatives = 0;
+  //   let zeros = 0;
+
+  for (let a of arr) {
+    // Do not need to count zeros
+    // if (a === 0) {
+    //   zeros++;
+
+    if (a > 0) {
+      postives++;
+    } else if (a < 0) {
+      negatives++;
+    }
+  }
+
+  // postives
+  console.log((postives / size).toFixed(6));
+  // negatives
+  console.log((negatives / size).toFixed(6));
+  // zeros
+  console.log(((size - postives - negatives) / size).toFixed(6));
+}
