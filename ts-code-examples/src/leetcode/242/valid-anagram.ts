@@ -1,12 +1,9 @@
 function mapString(s: string): Map<string, number> {
   const map = new Map<string, number>();
 
-  for (let i = 0; i <= s.length - 1; i++) {
-    const key = map.get(s[i]);
-
-    if (key === undefined) {
-      map.set(s[i], 1);
-    } else map.set(s[i], key + 1);
+  for (let char of s) {
+    const count = map.get(char);
+    map.set(char, count ? count + 1 : 1);
   }
 
   return map;
@@ -20,18 +17,32 @@ function mapString(s: string): Map<string, number> {
  * @returns true if both strings are a valid anagram
  */
 export function isAnagram(s: string, t: string): boolean {
+  // Compare two maps
+  // ex:
+  // tart vs trat
+
+  // {
+  //   t: 2,
+  //   a: 1,
+  //   r: 1
+  // }
+
+  // {
+  //   r: 1,
+  //   a: 1,
+  //   t: 2
+  // }
+
   if (s.length !== t.length) return false;
 
-  const sMap = mapString(s);
-  const tMap = mapString(t);
+  const firstStringMap = mapString(s);
+  const secondStringMap = mapString(t);
 
-  // console.log(sMap);
-  // console.log(tMap);
+  // console.log(firstStringMap);
+  // console.log(secondStringMap);
 
-  for (let [key, val] of sMap.entries()) {
-    if (tMap.get(key) === undefined) return false;
-
-    if (tMap.get(key) !== val) return false;
+  for (let char of s) {
+    if (firstStringMap.get(char) !== secondStringMap.get(char)) return false;
   }
 
   return true;

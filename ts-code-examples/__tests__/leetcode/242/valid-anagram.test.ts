@@ -5,5 +5,7 @@ describe("valid anagram", () => {
     expect(isAnagram("racae", "aeacr")).toBe(true);
     expect(isAnagram("rat", "car")).toBe(false);
     expect(isAnagram("rac", "car")).toBe(true);
+
+    expect(isAnagram("peterthiel", "thereptile")).toBe(true);
   });
 });
