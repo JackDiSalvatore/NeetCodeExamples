@@ -16,16 +16,20 @@
  */
 
 export function firstUniqueChar(s: string): number {
-  const uniqueCharacters = new Map<string, number>();
+  // First create a map of each character -> number of occurance times
+  const uniqueChars = new Map<string, number>();
 
-  for (let idx = 0; idx <= s.length - 1; idx++) {
-    const existingCharCount = uniqueCharacters.get(s[idx]);
-
-    uniqueCharacters.set(s[idx], existingCharCount ? existingCharCount + 1 : 1);
+  for (let char of s) {
+    const currentCount = uniqueChars.get(char);
+    uniqueChars.set(char, currentCount ? currentCount + 1 : 1);
   }
 
-  for (let idx = 0; idx <= s.length - 1; idx++) {
-    if (uniqueCharacters.get(s[idx]) === 1) return idx;
+  // console.log(uniqueChars);
+
+  // Then iterate through the string again, and
+  // if the character only occurs `1` time, then return the current index
+  for (let i = 0; i < s.length; i++) {
+    if (uniqueChars.get(s[i]) === 1) return i;
   }
 
   return -1;
