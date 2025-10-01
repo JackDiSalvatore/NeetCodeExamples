@@ -12,13 +12,14 @@ export function flat(
 ): MultiDimensionalArray {
   const result: MultiDimensionalArray = [];
 
-  function flatten(arr: MultiDimensionalArray, currDepth: number) {
-    for (let el of arr) {
-      //   console.log(el);
+  function flatten(innerArr: MultiDimensionalArray, currentDepth: number) {
+    for (let el of innerArr) {
+      if (Array.isArray(el) && currentDepth < n) {
+        // console.log("flatten: ", el, " (currDepth: ", currentDepth, ")");
 
-      if (Array.isArray(el) && currDepth < n) {
-        flatten(el, currDepth + 1);
+        flatten(el, currentDepth + 1);
       } else {
+        // console.log("pushing: ", el);
         result.push(el);
       }
     }
