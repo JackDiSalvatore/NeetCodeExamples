@@ -1,6 +1,7 @@
 # Given two strings `s` and `t`, return `true` if the two strings are anagrams of eachother
 # otherwise return `false`
 
+# ex:
 # s = rabbit
 # t = tibbar
 
@@ -14,23 +15,27 @@
 # t - 1  r - 1
 
 
-class Solution():
+class Solution:
 
-    def __init__(self, s, t):
-        self.s_letters = list(s)
-        self.t_letters = list(t)
+    def __init__(self):
+        pass
 
     def buildMap(self, letters):
         new_map = {}
 
         for i in range(0, len(letters)):
-            new_map[letters[i]] = new_map[letters[i]] + 1 if new_map.get(letters[i]) else 1
+            new_map[letters[i]] = (
+                new_map[letters[i]] + 1 if new_map.get(letters[i]) else 1
+            )
 
         return new_map
 
-    def isValid(self):
-        s_map = self.buildMap(self.s_letters)
-        t_map = self.buildMap(self.t_letters)
+    def isValid(self, s: str, t: str):
+        s_letters = list(s)
+        t_letters = list(t)
+
+        s_map = self.buildMap(s_letters)
+        t_map = self.buildMap(t_letters)
 
         # ex: {'r': 1, 'a': 2, 'c': 2, 'e': 1}
 
@@ -46,19 +51,25 @@ class Solution():
         return True
 
 
-def testSolution(solution):
-    if (solution.isValid()):
-        print("is an anagram")
+def testSolution(s: str, t: str):
+    solution = Solution()
+
+    if solution.isValid(s, t):
+        print(f"'{s} and '{t}' are anagrams")
     else:
-        print("not an anagram")
+        print(f"'{s} and '{t}' are not anagrams")
+
+    del solution
 
 
 def main():
-    print('done!')
+    print("Start...\r\n")
 
-    testSolution(Solution("racecar", "carrace"))
-    testSolution(Solution("rabbit", "tibbar"))
-    testSolution(Solution("thsfr", "rfhst"))
+    testSolution("racecar", "carrace")
+    testSolution("rabbit", "tibbar")
+    testSolution("thsfr", "frhst")
+
+    print("\r\nDone!")
 
 
 if __name__ == "__main__":
