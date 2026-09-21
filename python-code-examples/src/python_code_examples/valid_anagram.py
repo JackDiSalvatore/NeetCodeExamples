@@ -49,28 +49,3 @@ class ValidAnagramSolution:
                 return False
 
         return True
-
-
-def testSolution(s: str, t: str):
-    solution = ValidAnagramSolution()
-
-    if solution.isValid(s, t):
-        print(f"'{s} and '{t}' are anagrams")
-    else:
-        print(f"'{s} and '{t}' are not anagrams")
-
-    del solution
-
-
-def main():
-    print("Start...\r\n")
-
-    testSolution("racecar", "carrace")
-    testSolution("rabbit", "tibbar")
-    testSolution("thsfr", "frhst")
-
-    print("\r\nDone!")
-
-
-if __name__ == "__main__":
-    main()
