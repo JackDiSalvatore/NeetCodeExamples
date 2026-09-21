@@ -37,3 +37,5 @@ bin/
 ### Ect ###
 StudyGuide.md
 
+### Python ###
+python_code_examples.egg-info/
