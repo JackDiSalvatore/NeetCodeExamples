@@ -39,3 +39,4 @@ StudyGuide.md
 
 ### Python ###
 python_code_examples.egg-info/
+__pycache__/*
