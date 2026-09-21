@@ -17,11 +17,8 @@
 
 class ValidAnagramSolution:
 
-    def __init__(self):
-        pass
-
-    def buildMap(self, letters):
-        new_map = {}
+    def buildMap(self, letters: list[str]) -> dict[str, int]:
+        new_map: dict[str, int] = {}
 
         for i in range(0, len(letters)):
             new_map[letters[i]] = (
@@ -30,12 +27,13 @@ class ValidAnagramSolution:
 
         return new_map
 
-    def isValid(self, s: str, t: str):
-        s_letters = list(s)
-        t_letters = list(t)
+    def isValid(self, s: str, t: str) -> bool:
 
-        s_map = self.buildMap(s_letters)
-        t_map = self.buildMap(t_letters)
+        if len(s) != len(t):
+            return False
+
+        s_map = self.buildMap(list(s))
+        t_map = self.buildMap(list(t))
 
         # ex: {'r': 1, 'a': 2, 'c': 2, 'e': 1}
 
