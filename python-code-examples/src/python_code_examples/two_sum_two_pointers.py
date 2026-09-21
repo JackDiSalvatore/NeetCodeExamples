@@ -33,10 +33,10 @@
 
 class TwoSumTwoPointerSolution:
 
-    def findIndex(self, nums, target):
+    def findIndex(self, nums: list[int], target: int) -> tuple[int, int]:
 
-        left = 0
-        right = len(nums) - 1
+        left: int = 0
+        right: int = len(nums) - 1
 
         while left <= right:
             # print(nums[left])
@@ -59,4 +59,4 @@ class TwoSumTwoPointerSolution:
             # elif (target - nums[right] > nums[left]):
             #     left = left + 1
 
-        return 0, 0
+        raise ValueError(f"no pair sums to {target}")
