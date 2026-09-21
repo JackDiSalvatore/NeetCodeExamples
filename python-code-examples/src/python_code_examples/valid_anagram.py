@@ -15,7 +15,7 @@
 # t - 1  r - 1
 
 
-class Solution:
+class ValidAnagramSolution:
 
     def __init__(self):
         pass
@@ -52,7 +52,7 @@ class Solution:
 
 
 def testSolution(s: str, t: str):
-    solution = Solution()
+    solution = ValidAnagramSolution()
 
     if solution.isValid(s, t):
         print(f"'{s} and '{t}' are anagrams")

@@ -9,5 +9,6 @@ description = "Python Code Examples"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "black"
+    "black",
+    "pytest"
 ]

@@ -1,5 +1,5 @@
 # Given an array of integers `nums` and an integer `target`,
-# return the indices `i` and `j` such that 
+# return the indices `i` and `j` such that
 # `nums[i] + nums[j] == target` and `i != j``
 
 # ex: nums = [3,4,5,6], target = 7
@@ -30,24 +30,26 @@
 # ex: 5 - 3 > 1
 #     2 > 1
 
-class TwoSumSolution():
-    def __init__(self, nums, target):
+
+class TwoSumTwoPointerSolution:
+
+    def findIndex(self, nums, target):
 
         left = 0
         right = len(nums) - 1
 
-        while (left <= right):
+        while left <= right:
             # print(nums[left])
             # print(nums[right])
 
             # move pointers
             current_sum = nums[left] + nums[right]
 
-            if (current_sum == target):
-                print(f'Indexes are nums[{left}] and nums[{right}] = {target}')
-                return
-            
-            if (current_sum > target):
+            if current_sum == target:
+                # print(f'Indexes are nums[{left}] and nums[{right}] = {target}')
+                return left, right
+
+            if current_sum > target:
                 right -= 1
             else:
                 left += 1
@@ -57,13 +59,4 @@ class TwoSumSolution():
             # elif (target - nums[right] > nums[left]):
             #     left = left + 1
 
-        return
-
-def main():
-    # Note: input must be sorted
-    solution = TwoSumSolution([3,4,5,6], 7)
-    solution = TwoSumSolution([1,1,2,4,5,6], 6)
-    print("Done!")
-
-if __name__ == "__main__":
-    main()
+        return 0, 0
