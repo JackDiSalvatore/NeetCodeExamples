@@ -45,8 +45,6 @@ class TwoSumHashMapSolution:
             else:
                 return complement_idx, idx
 
-            #         return complement_map[complement], idx
-
         raise ValueError(f"no pair sums to {target}")
 
 
