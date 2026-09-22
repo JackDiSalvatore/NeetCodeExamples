@@ -38,6 +38,9 @@ class TwoSumTwoPointerSolution:
         left: int = 0
         right: int = len(nums) - 1
 
+        # Note: `nums`` must be sorted
+        nums.sort()
+
         while left < right:
             # print(nums[left])
             # print(nums[right])
